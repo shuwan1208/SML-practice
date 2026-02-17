@@ -1,0 +1,12 @@
+val theCoins = [25, 10, 5, 1]
+
+fun cc (0, _) = 1  
+  | cc (sum, []) = 0 
+  | cc (sum, coins as c::cs) =
+    if sum < 0 then 0 
+    else 
+      cc (sum - c, coins) + cc (sum, cs)
+
+fun coin_change sum = cc (sum, theCoins)
+
+val result = coin_change 1000
